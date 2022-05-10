@@ -18,6 +18,10 @@
 
 (пофиксили баг с отчетом и пустыми строками, мигрировали на .net6, добавили пару юнит-тестов. все это весело через TeamViewer и SSH)
 
+## CI/CD
+
+Azure Devops. Проблемы с агентом при добавлении Environment (ссылка не на arm агента). Надо найти в настройках -> пулы -> агенты ссылку на arm агента
+
 ## Бухгалтерия
 
 (лол кек купили вездеход... новая камера, шар 2000г)
@@ -39,3 +43,9 @@
 ## Ссылки
 
 (оказывается выискивать ссылки в тексе очень не удобно, пусть будут списком еще и тут)
+
+https://ostechnix.com/how-to-change-linux-console-font-type-and-size/
+https://raspberrypi.stackexchange.com/a/40144
+https://askubuntu.com/a/311454
+https://www.simplified.guide/linux/automatically-run-program-on-startup
+[запрос на джобы в ажуре для публичных проектов]https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#capabilities-and-limitations
