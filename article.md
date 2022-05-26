@@ -49,3 +49,7 @@ https://raspberrypi.stackexchange.com/a/40144
 https://askubuntu.com/a/311454
 https://www.simplified.guide/linux/automatically-run-program-on-startup
 [запрос на джобы в ажуре для публичных проектов]https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#capabilities-and-limitations
+[ssh reverse]https://www.howtogeek.com/428413/what-is-reverse-ssh-tunneling-and-how-to-use-it/
+[ExecStartPre]https://serverfault.com/a/867845
+[SoftRF Config Tool]http://soaringweather.no-ip.info/SoftRF/basic.html
+[SoftRF Dongle Settings]https://github.com/lyusupov/SoftRF/wiki/Dongle-settings#windows-pc-or-laptop
