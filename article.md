@@ -1,10 +1,14 @@
 # Самодельный стратостат. Сезон 2022. Часть 1
 
+![Vostok-5](images/header.jpg)
+
+Вот мы и вернулись! С "небольшим" опозданием, но нам есть чем оправдаться ;) В прошлом году мы строили и запускали самодельные стратостаты с целью привезти видео в 4k с высоты 30+ километров. В этом году мы, наконец-то, достигли безапелляционной победы, которой можно гордиться. Получилось опять "длинно", но я сокращал как мог. Поехали?
+
 ## Вступление
 
 Так как я считаю, что "просветительскую" часть миссии мы закрыли в прошлом сезоне, опубликовав, фактически, пошаговую инструкцию по созданию таких зондов из ничего, то теперь я буду опускать большинство деталей. Это позволит не раздувать и без того не маленький текст, и сосредоточиться на более веселом - на видосах :) Тем более что теперь там точно есть на что посмотреть. Чуть подробней чем "никак" я опишу лишь критически важные для миссии места.
 
-Если появятся вопросы, даже если ответы на них есть в других статьях (смотрите у меня [в профиле](https://habr.com/ru/users/v0stok86/)) - задавайте в коментариях. Я отвечаю на все и всё что знаю. Начнем.
+Если появятся вопросы, даже если ответы на них есть в других статьях (смотрите у меня [в профиле](https://habr.com/ru/users/v0stok86/)) - задавайте в коментариях. Я отвечаю на все и всё что знаю. Начнём.
 
 ## Список оборудования и компонентов
 
@@ -517,7 +521,7 @@ stages:
 
 1. Билдим, запускаем тесты
 2. Деплоим домой
-3. Деплоим на прод
+3. Если до этого "ок" - деплоим на прод
 
 Всего у меня в репозитории сейчас 3 пайплайна: RpiProbeLogger, RpiProbeLogger.TerminalGui и ReverseSsh. Последний выглядит странно, но он прикольный.
 
@@ -581,6 +585,8 @@ WantedBy=multi-user.target
 Стоит обратить внимание на свойства `After`, `Wants` - их значения указывают, что `ExecStart` надо выполнить только после установления соединения с какой-либо сетью. Не смотря на, вроде бы, явные требования к сети, тут потребовался небольшой лайфхак из [интеренетов](https://serverfault.com/a/867845). По не известной мне причине, сеть появлется раньше, чем подсистема DNS (наверно это ожидаемое поведение, но я такого не знал). Так что наш ssh просто не может зарезолвить доменное имя моей сети сразу же после появления связи. Из-за этого появилось свойство `ExecStartPre`. С помощью него мы можем отложить выполнение основной задачи, пока не зарезолвим имя проверочного хоста (example.com).
 
 Установку и настройку всего этого хозяйства можете посмотреть в пайплайне `ReverseSsh\azure-pipelines.ReverseSsh.yml`
+
+Технически, имея такой тоннель, необходимость в Azure стремится к нулю. Но исторически у меня сложился именно такой порядок реализаций, так что вот. Более подробно про reverse ssh помежет посмотреть, например, [тут](https://www.howtogeek.com/428413/what-is-reverse-ssh-tunneling-and-how-to-use-it/).
 
 Ладно, вроде на этом хардкор заканчивается, давайте в более гуманитарное русло.
 
@@ -741,16 +747,34 @@ TYP/SHAR RMK/ОБОЛОЧКА 300 ДЛЯ ЗОНДИРОВАНИЯ АТМОСФЕ
 
 ## Выводы
 
+В итоге, все цели поставленные перед миссией, были выполнены. Видео 4k с высоты 30+ км. мы привезли. Его можно крутить, его можно смотреть, его можно использовать в дебатах со сторонниками теории плоской земли.
+
+На данные момент мы поставили новую цель - снизить стоимость запусков. Для этого надо снизить стоимость "расходников". Наш самый дорогой, до сих пор - это шар. Латекс из Китая массой 2 кг. занимает примерно 80% всех расходов в каждом запуске. Нам подсказывали ранее, что хорошей альтернативой может стать полиэтилен. Это мы и вознамерились проверить. Если с ним всё сложится, то это уменьшит стоимость запуска на 2 порядка!. Между собой мы называем это - запуск на пакетах из Ашана.
+
+Ну и с бликами дисплея надо что-то придумать. Пока что рабочая версия - разместить "как-то" на боковой стенке. Будем посмотреть.
+
+На этом всё. Fly safe, cmdr!
+
 ## Ссылки
 
-(оказывается выискивать ссылки в тексе очень неудобно, пусть будут списком еще и тут)
+Оказывается выискивать ссылки в тексе очень неудобно, пусть будут списком еще и тут:
 
-https://ostechnix.com/how-to-change-linux-console-font-type-and-size/
-https://raspberrypi.stackexchange.com/a/40144
-https://askubuntu.com/a/311454
-https://www.simplified.guide/linux/automatically-run-program-on-startup
-[запрос на джобы в ажуре для публичных проектов]https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#capabilities-and-limitations
-[ssh reverse]https://www.howtogeek.com/428413/what-is-reverse-ssh-tunneling-and-how-to-use-it/
-[ExecStartPre]https://serverfault.com/a/867845
-[SoftRF Config Tool]http://soaringweather.no-ip.info/SoftRF/basic.html
-[SoftRF Dongle Settings]https://github.com/lyusupov/SoftRF/wiki/Dongle-settings#windows-pc-or-laptop
+- Поисковый трекер [Азимут IRIDIUM/GSM](https://www.decima.ru/video_audio/catalog/navigatsionnye_pribory/treker_navigatsionnyy_sputnikovyy_azimut_iridium_gsm/)
+- Камера [Insta360 One X2](https://www.insta360.com/ru/product/insta360-onex2)
+- LCD дисплей [Waveshare 4.1inch Touch DSI](https://www.waveshare.com/4.3inch-dsi-lcd.htm)
+- Сайт для отслеживания трекера [flyrf.ru](https://flyrf.ru/)
+- Картонные [VR очки](https://imcardboard.com/)
+- Репозиторий с [исходным кодом](https://github.com/ArtemKiyashko/RpiProbeLogger)
+- Файлы [телеметрии](https://github.com/ArtemKiyashko/ProbeLoggerArticle5/tree/master/telemetry)
+- Межпроцессная коммуникация в проекте - [ZeroMQ](https://zeromq.org)
+- Dotnet GUI для терминала - [Gui.cs](https://github.com/migueldeicaza/gui.cs)
+- Запрос на 10 parallel jobs в [Azure](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml#capabilities-and-limitations)
+- ExecStartPre фикс для сервиса с [After=network-online.target](https://serverfault.com/a/867845)
+- Про [Reverse SSH](https://www.howtogeek.com/428413/what-is-reverse-ssh-tunneling-and-how-to-use-it/)
+- Страница сайта ОВД для [пространства класс G](https://gkovd.ru/services/class-g/)
+- Постановление 54 ФП ИВП с порядком запуска [шаров-зондов](https://gkovd.ru/upload/activities-files/postanovlenie138.pdf)
+- Построение прогнозов траектории для шаров-зондов - [CUSF Landing Predictor](http://predict.habhub.org/)
+- Метод расчета высоты по разнице давлений - [Барометрическое невелирование](https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D1%80%D0%BE%D0%BC%D0%B5%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D0%BD%D0%B8%D0%B2%D0%B5%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
+- Про [интерполяцию](https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BF%D0%BE%D0%BB%D1%8F%D1%86%D0%B8%D1%8F)
+
+![Footer](images/footer.png)
