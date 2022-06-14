@@ -588,6 +588,13 @@ WantedBy=multi-user.target
 
 Технически, имея такой тоннель, необходимость в Azure стремится к нулю. Но исторически у меня сложился именно такой порядок реализаций, так что вот. Более подробно про reverse ssh можете посмотреть, например, [тут](https://www.howtogeek.com/428413/what-is-reverse-ssh-tunneling-and-how-to-use-it/).
 
+Теперь, если хотите, можете хоть с телефона наблюдать:
+
+![Mobile Telemetry](images/2022-06-14%2010.39.13.jpg)
+
+Разумеется, это работает до тех пор, пока RPI имеет хоть какое-то соединение с интернетом.
+
+
 Ладно, вроде на этом хардкор заканчивается, давайте в более гуманитарное русло.
 
 ## Подготовка к запуску
@@ -772,6 +779,7 @@ TYP/SHAR RMK/ОБОЛОЧКА 300 ДЛЯ ЗОНДИРОВАНИЯ АТМОСФЕ
 - Поисковый трекер [Азимут IRIDIUM/GSM](https://www.decima.ru/video_audio/catalog/navigatsionnye_pribory/treker_navigatsionnyy_sputnikovyy_azimut_iridium_gsm/)
 - Камера [Insta360 One X2](https://www.insta360.com/ru/product/insta360-onex2)
 - LCD дисплей [Waveshare 4.1inch Touch DSI](https://www.waveshare.com/4.3inch-dsi-lcd.htm)
+- 15 pin FFC шлейфы - [Китай](https://aliexpress.ru/item/1005004101445637.html)
 - Сайт для отслеживания трекера [flyrf.ru](https://flyrf.ru/)
 - Картонные [VR очки](https://imcardboard.com/)
 - Репозиторий с [исходным кодом](https://github.com/ArtemKiyashko/RpiProbeLogger)
